@@ -59,5 +59,4 @@
 defineProps({
   data: Object // Recibe el objeto 'data' del padre
 });
-
 </script>

@@ -65,9 +65,8 @@ const onSubmit = async () => {
     
     // Verificamos que ip.value no esté vacío y que esté en el formato correcto
     if (ip.value) {
-      // Añadimos un pequeño retraso antes de llamar a la API, si es necesario
-      await new Promise(resolve => setTimeout(resolve, 2000)); // 200 ms de retraso
       await callApi(ip.value);
+      
     } else {
       console.warn('IP no válida después de la resolución DNS');
     }
@@ -76,5 +75,15 @@ const onSubmit = async () => {
   }
 };
 
+// const url = ref("");
+// const { ip, error, lookupDomain } = useLookUpDomain();
+// const { data, callApi } = useCallApi();
+
+// const onSubmit = async () => {
+//   await lookupDomain(url.value);
+//   if (ip.value) {
+//     await callApi(ip.value);
+//   }
+// };
 
 </script>

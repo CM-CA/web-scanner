@@ -16,6 +16,7 @@
             Scanner de páginas webs maliciosas.
           </p>
           <TheSearcher />
+          
         </div>
       </div>
     </section>
@@ -26,5 +27,7 @@
 </template>
 
 <script setup>
+
+
 
 </script>

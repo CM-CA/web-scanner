@@ -1,26 +1,35 @@
 // composables/useCallApi.ts
 export default function useCallApi() {
-  const data = useState('data', () => null);
-  const error = useState('apiError', () => '');
+  
+  const data = ref(null)
+  const error = ref(null)
 
   const callApi = async (ip) => {
-    const urlAPI = `https://vulnerability-scanner2.p.rapidapi.com/${ip}`;
+    const urlAPI = `https://vulnerability-scanner2.p.rapidapi.com/${ip}`
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": process.env.NUXT_RAPIDAPI_KEY,
-        "x-rapidapi-host": process.env.NUXT_RAPIDAPI_HOST,
+        "x-rapidapi-key": 'a97bd13549msh71d5393b9cb77d4p1415c5jsn3a555b07a4d5',
+        "x-rapidapi-host": "vulnerability-scanner2.p.rapidapi.com",
       },
-    };
+      server: true, // Permite ejecutar en SSR
+    }
 
     try {
-      const response = await fetch(urlAPI, options);
-      data.value = await response.json();
-      error.value = ''; // Limpiar error si la API responde correctamente
+      const { data: apiData, error: apiError } = await useFetch(urlAPI, options)
+      console.log(options)
+      if (apiError.value) {
+        error.value = apiError.value // Asigna el error si existe
+        console.error("Error en callApi:", apiError.value)
+      } else {
+        data.value = apiData.value // Asigna los datos obtenidos
+       
+      }
     } catch (err) {
-      error.value = "Error al obtener datos de la API: " + err.message;
+      error.value = err
+      console.error("Error en callApi:", err)
     }
-  };
+  }
 
-  return { data, error, callApi };
+  return { data, error, callApi }
 }

@@ -6,9 +6,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/ui", "@nuxtjs/tailwindcss"],
   compatibilityDate: "2024-10-21",
   runtimeConfig: {
-    public: {
-      NUXT_RAPIDAPI_KEY: process.env.NUXT_RAPIDAPI_KEY,
-      NUXT_RAPIDAPI_DNSLOOKUP: process.env.NUXT_RAPIDAPI_DNSLOOKUP
-    },
+    NUXT_RAPIDAPI_KEY: process.env.NUXT_RAPIDAPI_KEY,
+    NUXT_RAPIDAPI_DNSLOOKUP: process.env.NUXT_RAPIDAPI_DNSLOOKUP,
   },
 });
