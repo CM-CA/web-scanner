@@ -17,7 +17,6 @@ export default function useCallApi() {
 
     try {
       const { data: apiData, error: apiError } = await useFetch(urlAPI, options)
-      console.log(options)
       if (apiError.value) {
         error.value = apiError.value // Asigna el error si existe
         console.error("Error en callApi:", apiError.value)
