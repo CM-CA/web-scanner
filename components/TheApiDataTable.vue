@@ -21,28 +21,31 @@
           >
             <td class="px-6 py-4">
               <ul>
-                <li>{{ data.cpes.join(', ')}}</li>
+                <li>{{ data.cpes.join(', ') || 'No CPE' }}</li>
               </ul>
             </td>
             <td class="px-6 py-4">
               <ul>
-                <li >{{ data.hostnames.join(', ') }}</li>
+                <li >{{ data.hostnames.join(', ') || 'No Hostname' }}</li>
               </ul>
             </td>
-            <td class="px-6 py-4">{{ data.ip }}</td>
+            <td class="px-6 py-4">{{ data.ip || 'No IP' }}</td>
             <td class="px-6 py-4">
               <ul>
-                <li >{{ data.ports.join(', ') }}</li>
-              </ul>
-            </td>
-            <td class="px-6 py-4">
-              <ul>
-                <li >{{ data.vulns.join(', ') }}</li>
+                <li >{{ data.ports.join(', ') || 'No Ports' }}</li>
               </ul>
             </td>
             <td class="px-6 py-4">
+             
               <ul>
-                <li >{{ data.tags.join(', ') }}</li>
+                <li >{{ data.vulns.join(', ') || 'No Vulnerabilities'}}</li>
+              </ul>
+              
+              
+            </td>
+            <td class="px-6 py-4">
+              <ul>
+                <li >{{ data.tags.join(', ') || 'No Tags' }}</li>
               </ul>
             </td>
           </tr>
@@ -59,4 +62,5 @@
 defineProps({
   data: Object // Recibe el objeto 'data' del padre
 });
+
 </script>

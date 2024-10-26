@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <form @submit.prevent="onSubmit" class="max-w-md mx-auto">
       <label
         for="default-search"
@@ -47,9 +47,10 @@
     </form>
 
     <!-- Componente hijo, donde pasas los datos obtenidos -->
-    
+
     <div v-if="data">
       <TheApiDataTable :data="data" />
+      <!-- <TheCvsDataTable :data="data" /> -->
     </div>
   </div>
 </template>
@@ -62,28 +63,15 @@ const { data, callApi } = useCallApi();
 const onSubmit = async () => {
   try {
     await lookupDomain(url.value);
-    
+
     // Verificamos que ip.value no esté vacío y que esté en el formato correcto
     if (ip.value) {
       await callApi(ip.value);
-      
     } else {
-      console.warn('IP no válida después de la resolución DNS');
+      console.warn("IP no válida después de la resolución DNS");
     }
   } catch (error) {
-    console.error('Error en onSubmit:', error);
+    console.error("Error en onSubmit:", error);
   }
 };
-
-// const url = ref("");
-// const { ip, error, lookupDomain } = useLookUpDomain();
-// const { data, callApi } = useCallApi();
-
-// const onSubmit = async () => {
-//   await lookupDomain(url.value);
-//   if (ip.value) {
-//     await callApi(ip.value);
-//   }
-// };
-
 </script>
